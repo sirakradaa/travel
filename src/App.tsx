@@ -1,11 +1,11 @@
 import './App.css';
-import Navbar from './Components/Navbar';
+import NavbarComponent from './Components/Navbar';
 import HomePage from './Pages/HomePage/index';
 
 const App = () => {
   return (
     <>
-    <Navbar/>
+    <NavbarComponent/>
       <HomePage/>
     </>
   );

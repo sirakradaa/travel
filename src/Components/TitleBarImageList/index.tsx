@@ -3,7 +3,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 
-const TitleBarImageList = () => {
+const TitleBarImageListComponent = () => {
   return (
     <ImageList cols={3} sx={{ width: '100%'}}>
       {itemData.map((item) => (
@@ -25,7 +25,7 @@ const TitleBarImageList = () => {
   );
 }
 
-export default TitleBarImageList;
+export default TitleBarImageListComponent;
 
 const itemData = [
   {
