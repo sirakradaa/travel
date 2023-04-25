@@ -10,10 +10,11 @@ const HomePage = () => {
 
 
     return(
-        <><Grid container justifyContent={'center'} padding={1}>
+        <>
+        <Grid container justifyContent={'center'} padding={1}>
             <CheckboxComponent labels={labels}/>
             <TitleBarImageListComponent/>
-            </Grid>
+        </Grid>
         
         </>
     )
