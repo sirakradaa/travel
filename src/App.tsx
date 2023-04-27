@@ -10,8 +10,9 @@ import Register from './Pages/Register';
 const App = () => {
   return (
     <>
-    <NavbarComponent/>
     <BrowserRouter>
+    <NavbarComponent/>
+
       <Routes>
         <Route path="" element={<HomePage/>}/>
         <Route path="/login" element={<Login/>}/>

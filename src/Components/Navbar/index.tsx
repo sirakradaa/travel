@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { Link } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,14 +15,28 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { styled, createTheme, ThemeProvider } from '@mui/system';
+
+const customTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+      contrastText: 'white',
+    },
+  },
+});
+
+const MyThemeComponent = styled(Link)(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.primary.main,
+  padding: theme.spacing(1),
+  borderRadius: theme.shape.borderRadius,
+}));
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
@@ -48,13 +62,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
+    // transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
   },
 }));
+
+// const LinkColors = styled(Link)(({ theme }) => ({
+//   color: 'darkslategray',
+//   '& .MuiInputBase-input': {
+//     padding: theme.spacing(1, 1, 1, 0),
+//     // vertical padding + font size from searchIcon
+//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+//     transition: theme.transitions.create('width'),
+//     width: '100%',
+//     [theme.breakpoints.up('md')]: {
+//       width: '20ch',
+//     },
+//   },
+// }));
 
 const NavbarComponent = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -187,6 +215,13 @@ const NavbarComponent = () => {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {/* <LinkColors to={'/login'}>   
+              <Link to={"/login"}>Login</Link>         
+            </LinkColors> */}
+            <ThemeProvider theme={customTheme}>
+              <MyThemeComponent to={'/login'}>Login</MyThemeComponent>
+              <MyThemeComponent to={'/register'}>Register</MyThemeComponent>
+            </ThemeProvider>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
